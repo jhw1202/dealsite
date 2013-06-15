@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'thin'
 gem 'pg'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'better_errors'
