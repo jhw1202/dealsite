@@ -1,0 +1,14 @@
+<script type='text/mustache' id='frontpage-deals-template'>
+  {{#deals}}
+    {{#attributes}}
+
+    <div>
+      <a href="#/deals/{{&id}}" class='deal-view-link'><h3>{{title}}</h3></a>
+      <div>{{body}}</div>
+      <li>{{source}}</li>
+      <li>{{clicks}}</li>
+    </div>
+
+    {{/attributes}}
+  {{/deals}}
+</script>

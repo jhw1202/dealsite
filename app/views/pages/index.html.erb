@@ -1,29 +1,10 @@
 <h1>Today's MegaMega Deals</h1>
 
 <div class='deals'>
-  <script type='text/mustache' id='frontpage-deals-template'>
-  {{#deals}}
-    {{#attributes}}
-
-    <div>
-      <a href="#/deals/{{&id}}" class='deal-view-link'><h3>{{title}}</h3></a>
-      {{body}}
-      {{source}}
-      {{clicks}}
-    </div>
-
-    {{/attributes}}
-  {{/deals}}
-  </script>
-
-  <script type='text/mustache' id='single-deal-template'>
-  {{#deal}}
-    <h1>{{title}}</h1>
-    <div>
-    {{body}}
-    </div>
-    <li>Go to deal: <a href="{{&source}}">{{source}}</a></li>
-    <li>Num. of clicks: {{clicks}}</li>
-  {{/deal}}
-  </script>
 </div>
+
+<%= render "templates/frontpage_deals_template" %>
+<%= render "templates/single_deal_template" %>
+
+
+ 
