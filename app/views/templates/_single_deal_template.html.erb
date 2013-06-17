@@ -1,10 +1,12 @@
 <script type='text/mustache' id='single-deal-template'>
+  <div class='item' style="background-color:{{&color}}">
   {{#deal}}
     <h1>{{title}}</h1>
     <div>
     {{body}}
     </div>
-    <li>Go to deal: <a href="{{&source}}">{{source}}</a></li>
+    <li><a href="{{&source}}">Go to deal</a></li>
     <li>Num. of clicks: {{clicks}}</li>
   {{/deal}}
+  </div>
   </script>

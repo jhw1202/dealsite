@@ -7,6 +7,8 @@ $(document).ready(function(){
   }
 
   var template = function(id, data){
+    var colors = ["#3498db", "#1abc9c", "#9b59b6", "#34495e", "#27ae60", "#f1c40f", "#f39c12", "#95a5a6", "#d35400"]
+    data.color = colors[Math.floor(Math.random()*colors.length)]
     return Mustache.render($("#" + id).html(), data)
   }
 // $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
@@ -38,11 +40,8 @@ $(document).ready(function(){
       if (!attributes.source) {
         return "You must provide a link to the deal"
       }
-    },
-
-    render: function(){
-
     }
+
   })
 
   App.Collections.Deals = Backbone.Collection.extend({
@@ -57,28 +56,42 @@ $(document).ready(function(){
       var _this = this
       this.collection.fetch({
         success: function(dealsData){
-          var data = {deals: dealsData.models}
-          var output = template('frontpage-deals-template', data)
-          _this.$el.html(output)
+          dealsData.each(function(deal){
+            var dealView = new App.Views.Deal()
+            var data = {deal: deal.attributes}
+            dealView.isotopeRender(data)
+          })
+          // var data = {deals: dealsData.models}
+          // var output = template('frontpage-deals-template', data)
+          // _this.$el.html(output)
+          // // _this.$el
         }
       })
       return this
     }
+
   })
 
   App.Views.Deal = Backbone.View.extend({
     el: '.deals',
 
     render: function(options){
-      
       var _this = this
-      this.deal = new App.Models.Deal({id: options.id})
-      this.deal.fetch({
+      this.model = new App.Models.Deal({id: options.id})
+      this.model.fetch({
         success: function(deal){
           var data = {deal: deal.attributes}
           _this.$el.html(template('single-deal-template', data))
         }
       })
+    },
+
+    isotopeRender: function(deal){
+      var singleDeal = template('single-deal-template', deal)
+      // console.log($(singleDeal))
+      
+      console.log($(singleDeal))
+      this.$el.isotope('insert', $(singleDeal) )
     }
 
   })
@@ -106,5 +119,6 @@ $(document).ready(function(){
   })
 
   Backbone.history.start()
+
 
 })
