@@ -16,7 +16,15 @@ class DealsController < ApplicationController
     respond deal
   end
 
+  def create
+    p params.inspect
 
+    attributes = filter_params(Deal, params[:deal])
+
+    deal = Deal.create(attributes)
+
+    respond deal
+  end
 
   private
 
