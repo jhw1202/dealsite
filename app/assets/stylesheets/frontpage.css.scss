@@ -1,9 +1,36 @@
+@font-face {
+    font-family: 'latoregular';
+    src: url(font_path('lato-regular-webfont.eot'));
+    src: url(font_path('lato-regular-webfont.eot?#iefix')) format('embedded-opentype'),
+         url(font_path('lato-regular-webfont.woff')) format('woff'),
+         url(font_path('lato-regular-webfont.ttf')) format('truetype'),
+         url(font_path('lato-regular-webfont.svg#latoregular')) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'latobold';
+    src: url(font_path('lato-bold-webfont.eot'));
+    src: url(font_path('lato-bold-webfont.eot?#iefix')) format('embedded-opentype'),
+         url(font_path('lato-bold-webfont.woff')) format('woff'),
+         url(font_path('lato-bold-webfont.ttf')) format('truetype'),
+         url(font_path('lato-bold-webfont.svg#latobold')) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
 body {
   margin: 0;
 }
 
 .logo {
-  font-family: 'Lily Script One', cursive;
+  font-family: 'latoregular', sans-serif;
   font-size: 1.5em;
   line-height: 40px;
   display: block;
@@ -14,7 +41,6 @@ body {
 }
 
 .menu {
-  position: right;
   float: right;
   line-height: 40px;
   margin-right: 20px;
@@ -24,6 +50,29 @@ body {
   color: #000000;
   text-decoration: none;
   font-size: .75em;
+}
+
+#search {
+  float: left;
+  margin: 8px 0 0;
+  padding: 0px;
+  width: 190px;
+  height: 20px;
+}
+
+#search input {
+  width: 180px;
+  margin: 0;
+  border: 1px solid #000;
+}
+
+#search a {
+  margin: 0;
+  padding: 0;
+}
+
+#search img {
+  height: 15px;
 }
 
 .header {
