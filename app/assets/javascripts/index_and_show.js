@@ -15,7 +15,8 @@ $(document).ready(function(){
 //       options.url = (<%= raw root_url %>).toString() + options.url
 //     })
 
-  $.fn.serializeObject = function() {
+
+    $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
     $.each(a, function() {
@@ -90,7 +91,7 @@ $(document).ready(function(){
       var singleDeal = template('single-deal-template', deal)
       // console.log($(singleDeal))
       
-      console.log($(singleDeal))
+      //console.log($(singleDeal))
       this.$el.isotope('insert', $(singleDeal) )
     }
 
