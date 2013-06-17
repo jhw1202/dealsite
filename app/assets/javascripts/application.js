@@ -13,8 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.min
+//= require jquery.isotope.min
 //= require underscore
 //= require backbone
 //= require mustache
-//= require jquery.isotope.min
+//
+//= require deals
+//= require helpers
+//
+//= require_tree .//models
+//= require_tree .//collections
+//= require_tree .//views
+//= require_tree .//routers
 //= require_tree .
