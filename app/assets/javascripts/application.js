@@ -15,4 +15,5 @@
 //= require underscore
 //= require backbone
 //= require mustache
+//= require jquery.isotope.min
 //= require_tree .
