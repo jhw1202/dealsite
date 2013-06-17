@@ -3,6 +3,7 @@ App.Views.Deals = Backbone.View.extend({
 
   render: function(){
     var _this = this
+    this.$el.empty()
     this.collection.fetch({
       success: function(dealsData){
         dealsData.each(function(deal){
@@ -30,6 +31,7 @@ App.Views.Deal = Backbone.View.extend({
         _this.$el.html(template('single-deal-template', data))
       }
     })
+    return this
   },
 
   isotopeRender: function(deal){
