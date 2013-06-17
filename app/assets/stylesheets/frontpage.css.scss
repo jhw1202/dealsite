@@ -9,7 +9,6 @@
     font-style: normal;
 }
 
-
 @font-face {
     font-family: 'latobold';
     src: url(font_path('lato-bold/lato-bold-webfont.eot'));
@@ -21,7 +20,6 @@
     font-style: normal;
 }
 
-
 @font-face {
     font-family: 'lily_script_oneregular';
     src: url(font_path('lilyscriptone/lilyscriptone-regular-webfont.eot'));
@@ -32,9 +30,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-
-
 
 body {
   margin: 0;
@@ -100,9 +95,8 @@ body {
 }
 
 .item {
-  width: 223px;
-  padding: 7px;
-  float: left;
+  width: 200px;
+  padding: 5px;
   overflow: hidden;
   position: relative;
   margin: 15px 5px 15px 5px;
@@ -116,8 +110,6 @@ body {
   font-family: 'latoregular', sans-serif;
 
 }
-
-
 
 #dialog-form {
   background-color: white;
