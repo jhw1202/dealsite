@@ -1,17 +1,15 @@
 $(document).ready(function(){
  $( "#dialog-form" ).dialog({
       autoOpen: false,
-      height: 300,
-      width: 350,
+      height: 600,
+      width: 650,
       modal: true,
       draggable: false,
+      title: "Share a deal",
       buttons: {
         Cancel: function() {
           $( this ).dialog( "close" );
         }
-      },
-      close: function() {
-
       }
     });
 

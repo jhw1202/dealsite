@@ -1,26 +1,38 @@
 body {
   margin: 0;
 }
+
 .logo {
   font-family: 'Lily Script One', cursive;
-  font-size: 2em;
-  display: inline;
-  text-align: center;
+  font-size: 1.5em;
+  line-height: 40px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 230px;
+  margin-left: -115px;
 }
 
-#submit_deal {
-  display: inline-block;
-  text-align: right;
+.menu {
+  position: right;
+  float: right;
+  line-height: 40px;
+  margin-right: 20px;
 }
 
-.nav {
+.menu a {
+  color: #000000;
+  text-decoration: none;
+  font-size: .75em;
+}
+
+.header {
   width: 100%;
   height: 45px;
   background-color: #ecf0f1;
-  text-align: center;
 }
 
-.categories {
+.nav {
   background-color: #ecf0f1;
   border-top: 1px #bdc3c7 solid;
   height: 30px;
@@ -88,27 +100,28 @@ body {
   border: 2px solid #000;
 }
 
-.ui-dialog .ui-state-error { 
-  padding: .3em; 
+
+.ui-dialog .ui-state-error {
+  padding: .3em;
 }
 
-.validateTips { 
-  border: 1px solid transparent; 
-  padding: 0.3em; 
+.validateTips {
+  border: 1px solid transparent;
+  padding: 0.3em;
 }
 
-fieldset { 
-  padding:0; 
-  border:0; 
-  margin-top:25px; 
+fieldset {
+  padding:0;
+  border:0;
+  margin-top:25px;
 }
 
-label, input { 
-  display:block; 
+label, input {
+  display:block;
 }
-    
-input.text { 
-  margin-bottom:12px; 
-  width:95%; 
-  padding: .4em; 
+
+input.text {
+  margin-bottom:12px;
+  width:95%;
+  padding: .4em;
 }
