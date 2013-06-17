@@ -3,5 +3,4 @@ $(document).ready(function() {
     itemSelector : '.item',
     layoutMode : 'masonry'
   });
-
 })

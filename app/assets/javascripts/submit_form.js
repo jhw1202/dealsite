@@ -11,17 +11,17 @@ $(document).ready(function(){
         }
       },
       close: function() {
-        
+
       }
     });
- 
+
     $( "#submit_deal" ).on('click', function() {
         $( "#dialog-form" ).dialog( "open" );
   });
 
   App.Views.SubmitDealForm = Backbone.View.extend({
     el: "#dialog-form",
-    
+
     events: {
       'submit .deal-submit-form' : 'submitDeal'
     },
