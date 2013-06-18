@@ -57,9 +57,3 @@ $.Isotope.prototype._masonryGetContainerSize = function() {
     };
 };
 
-$(document).ready(function() {
-  $(".deals").isotope({
-    itemSelector : '.item',
-    layoutMode : 'masonry'
-  });
-})
