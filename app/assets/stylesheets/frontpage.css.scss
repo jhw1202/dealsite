@@ -92,6 +92,7 @@ body {
   border-top: 1px #bdc3c7 solid;
   height: 30px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .item {
@@ -99,8 +100,7 @@ body {
   padding: 5px;
   overflow: hidden;
   position: relative;
-  margin: 15px 5px 15px 5px;
-  border-bottom-left-radius: 15px;
+  margin: 0 5px 5px 5px;
 }
 
 .deals {
