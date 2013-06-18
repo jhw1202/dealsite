@@ -11,6 +11,13 @@ App.Views.Deals = Backbone.View.extend({
           var data = {deal: deal.attributes}
           dealView.isotopeRender(data)
         })
+
+        $(".deals").imagesLoaded( function(){
+          $(".deals").isotope({
+            itemSelector : '.item',
+           layoutMode : 'masonry'
+          });
+        })
       }
     })
     return this
@@ -36,7 +43,7 @@ App.Views.Deal = Backbone.View.extend({
 
   isotopeRender: function(deal){
     var singleDeal = template('single-deal-template', deal)
-    this.$el.isotope('insert', $(singleDeal) )
+    this.$el.append($(singleDeal))
   }
 
 })
