@@ -60,25 +60,29 @@ body {
 
 #search {
   float: left;
-  margin: 8px 0 0;
+  margin: 8px 0 0 8px;
   padding: 0px;
-  width: 190px;
-  height: 20px;
+  width: 230px;
+  height: 30px;
 }
 
 #search input {
+  display: inline;
+  padding-left: 5px;
   width: 180px;
+  height: 20px;
   margin: 0;
   border: 1px solid #000;
 }
 
 #search a {
+
   margin: 0;
   padding: 0;
 }
 
 #search img {
-  height: 15px;
+  height: 12px;
 }
 
 .header {
@@ -100,7 +104,7 @@ body {
   padding: 5px;
   overflow: hidden;
   position: relative;
-  margin: 0 5px 5px 5px;
+  margin: 0 3px 5px 3px;
 }
 
 .deals {
