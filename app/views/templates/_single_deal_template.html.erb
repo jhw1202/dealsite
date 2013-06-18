@@ -1,15 +1,15 @@
 <script type='text/mustache' id='single-deal-template'>
-  <div class='item' style="background-color:{{&color}}">
+  <div class='item'>
   {{#deal}}
-    <h3>{{title}}</h3>
     <div class="product_image">
     <img src="{{product_image}}" />
     </div>
-    <div>
-    {{body}}
-    </div>
+    <div class="product_info" style="background-color:{{&color}}">
+    <div class="product_title">{{title}}</div>
+    <div class="product_price">${{price}}.00</div>
     <li><a href="{{&source}}">Go to the MegaDeal</a></li>
     <li>Meganess: {{clicks}}</li>
   {{/deal}}
+  </div>
   </div>
   </script>
