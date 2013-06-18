@@ -9,6 +9,7 @@ window.App = {
     var dealsView = new App.Views.Deals({collection: deals})
     var dealView = new App.Views.Deal()
     var submitForm = new App.Views.SubmitDealForm()
+    var editForm = new App.Views.EditDealForm()
 
     var router = new Router()
 
@@ -21,7 +22,7 @@ window.App = {
     })
 
     router.on('route:editDeal', function(id){
-      submitForm.editFormRender({id: id})
+      editForm.render({id: id})
     })
 
     Backbone.history.start()

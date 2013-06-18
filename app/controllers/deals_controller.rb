@@ -26,6 +26,22 @@ class DealsController < ApplicationController
     respond deal
   end
 
+  def update
+    return no_deal if no_deal?(params[:id])
+
+    deal = Deal.find(params[:id]).update_attributes(filter_params(Deal, params[:deal]))
+
+    respond deal
+  end
+
+  def destroy
+    return no_deal if no_deal?(params[:id])
+
+    deal = Deal.find(params[:id]).destroy
+
+    respond deal
+  end
+
   private
 
   def no_deal

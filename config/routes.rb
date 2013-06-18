@@ -1,6 +1,11 @@
 Dealsite::Application.routes.draw do
   root :to => "pages#index"
-  resources :deals
+
+  resources :deals, :only => [:show, :create, :index]
+
+  match "/deals/:id" => "deals#update", :via => :put
+
+  match "/deals/:id" => "deals#destroy", :via => :delete
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
