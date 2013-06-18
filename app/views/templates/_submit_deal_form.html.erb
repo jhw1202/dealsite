@@ -7,32 +7,14 @@
 <div id="dialog-form" title="Share a deal!">
   <p class="validateTips">All form fields are required.</p>
 
-
 <%= form_for Deal.new, :html => {:class => 'deal-submit-form'} do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
-    <label for="Description" >
+    <%= f.label :body, "Description" %>
     <%= f.text_area :body %>
-    <label for="Deal Source URL">
+    <%= f.label :source, "Deal Source URL" %>
     <%= f.text_field :source %>
     <%= f.submit %>
 <% end %>
 
-  <!-- <form class='deal-submit-form'>
-<div id="dialog-form">
-  <p class="validateTips" style="visibility:hidden"></p>
-
-  <form class='deal-submit-form'>
->>>>>>> f00640a908be692f6fc18719c721559c90e29106
-  <fieldset>
-    <label for="title">Title</label>
-    <input type="text" name='deal["title"]' id="name" class="text ui-widget-content ui-corner-all" />
-    <label for="body">Description</label>
-    <input type="text" name="deal['body']" id="body" value="" class="text ui-widget-content ui-corner-all" />
-    <label for="source">Deal Source URL</label>
-    <input type="text" name="deal['source']" id="source" value="" class="text ui-widget-content ui-corner-all" />
-
-  </fieldset>
-    <button type="submit">Fuck!</button>
-  </form> -->
 </div>
