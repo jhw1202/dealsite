@@ -11,12 +11,13 @@ App.Views.Deals = Backbone.View.extend({
           var data = {deal: deal.attributes}
           dealView.isotopeRender(data)
         })
-
         $(".deals").imagesLoaded( function(){
+          $('#ajax-loader').css({"visibility": "hidden"})
           $(".deals").isotope({
             itemSelector : '.item',
            layoutMode : 'masonry'
           });
+          $('.deals').css({"visibility": "visible"})
         })
       }
     })
