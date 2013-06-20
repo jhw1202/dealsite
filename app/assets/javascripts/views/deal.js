@@ -1,5 +1,15 @@
+/*
+|--------------------------------------------------------------------------
+| All Deals View
+|--------------------------------------------------------------------------
+*/
+
 App.Views.Deals = Backbone.View.extend({
   el: '.deals',
+
+  initialize: function() {
+
+  },
 
   render: function(){
     var _this = this
@@ -15,7 +25,7 @@ App.Views.Deals = Backbone.View.extend({
           $('#ajax-loader').css({"visibility": "hidden"})
           $(".deals").isotope({
             itemSelector : '.item',
-           layoutMode : 'masonry'
+            layoutMode : 'masonry'
           });
           $('.deals').css({"visibility": "visible"})
         })
@@ -23,12 +33,20 @@ App.Views.Deals = Backbone.View.extend({
     })
     return this
   }
-
 })
 
+/*
+|--------------------------------------------------------------------------
+| Single Deal View
+|--------------------------------------------------------------------------
+*/
 
 App.Views.Deal = Backbone.View.extend({
   el: '.deals',
+
+  events: {
+    "click .item" : function() {console.log(this)}
+  },
 
   render: function(options){
     var _this = this
@@ -44,13 +62,19 @@ App.Views.Deal = Backbone.View.extend({
     return this
   },
 
-  isotopeRender: function(deal){
-    var singleDeal = template('single-deal-template', deal)
-    this.$el.append($(singleDeal))
+  isotopeRender: function(data){
+    this.model = new App.Models.Deal(data.deal)
+    var singleDeal = template('single-deal-template', data)
+    $('.deals').append($(singleDeal))
   }
 
 })
 
+/*
+|--------------------------------------------------------------------------
+| Submit Deal View
+|--------------------------------------------------------------------------
+*/
 App.Views.SubmitDealForm = Backbone.View.extend({
     el: "#dialog-form",
 
@@ -69,7 +93,6 @@ App.Views.SubmitDealForm = Backbone.View.extend({
       var deal = new App.Models.Deal()
       deal.save(dealData, {
         success: function(deal){
-          console.log(deal)
           alert("Deal submitted!")
           $("#dialog-form").dialog('close')
         }
@@ -79,12 +102,18 @@ App.Views.SubmitDealForm = Backbone.View.extend({
 
   })
 
+/*
+|--------------------------------------------------------------------------
+| Edit Deal View
+|--------------------------------------------------------------------------
+*/
+
 App.Views.EditDealForm = Backbone.View.extend({
   el: '.dummy-div'
 
   ,events: {
-    'submit .deal-edit-form' : 'updateDeal'
-    ,'click .delete-deal-button' : 'deleteDeal'
+    'submit .deal-edit-form' : 'updateDeal',
+    'click .delete-deal-button' : 'deleteDeal'
   }
 
   ,render: function(options){
@@ -105,7 +134,6 @@ App.Views.EditDealForm = Backbone.View.extend({
     this.deal.set(dealData)
     this.deal.save(dealData, {
       success: function(deal){
-        console.log(deal.attributes)
         _this.$el.append("<h1>Your deal has been edited brah</h1>")
       }
     })
@@ -119,8 +147,7 @@ App.Views.EditDealForm = Backbone.View.extend({
       this.deal.destroy({
         success: function(deletedDeal){
           alert("Deal " + deletedDeal.attributes.title + "has been deleted. Happy megemegadealing!")
-          var router = new Router()
-          router.navigate('', {trigger: true})
+          App.router.navigate('', {trigger: true})
         }
       })
     }
