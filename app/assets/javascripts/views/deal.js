@@ -5,20 +5,21 @@
 */
 
 App.Views.Deals = Backbone.View.extend({
-  el: '.deals',
+  el: '.deals'
 
-  events: {
-    "click .item" : function(item) {console.log(item.currentTarget)}
-  },
+  ,events: {
+    "mouseenter .item" : "toggleLinkIcon",
+    "mouseleave .item" : "toggleLinkIcon"
+  }
 
-  initialize: function() {
+  ,initialize: function() {
     $(".deals").isotope({
       itemSelector : '.item',
       layoutMode : 'masonry'
     });
-  },
+  }
 
-  render: function(){
+  ,render: function(){
     var _this = this
     this.$el.empty()
     this.collection.fetch({
@@ -45,6 +46,11 @@ App.Views.Deals = Backbone.View.extend({
       $('.deals').css({"visibility": "visible"})
     })
   }
+
+  ,toggleLinkIcon: function(event){
+    $(event.currentTarget).find(".external_link")
+                          .css({"visibility" : event.type === "mouseenter" ? "visible": "hidden"})
+  }
 })
 
 /*
@@ -55,7 +61,6 @@ App.Views.Deals = Backbone.View.extend({
 
 App.Views.Deal = Backbone.View.extend({
   el: '.deals',
-
 
   render: function(options){
     var _this = this

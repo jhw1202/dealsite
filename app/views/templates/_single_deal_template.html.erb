@@ -7,7 +7,7 @@
     <div class="product_info" >
     <div class="product_title">{{title}}</div>
     <div class="product_price">${{price}}.00</div>
-    <a href="{{&source}}">Go to the MegaDeal</a>
+    <a href="{{&source}}" class="external_link" target="_blank"><%= image_tag("external_link.png", :width => "25px") %></a>
     <div class="product_meganess">Meganess: {{clicks}}</div>
   {{/deal}}
   </div>
