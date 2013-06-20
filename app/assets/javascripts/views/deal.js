@@ -7,8 +7,15 @@
 App.Views.Deals = Backbone.View.extend({
   el: '.deals',
 
-  initialize: function() {
+  events: {
+    "click .item" : function(item) {console.log(item.currentTarget)}
+  },
 
+  initialize: function() {
+    $(".deals").isotope({
+      itemSelector : '.item',
+      layoutMode : 'masonry'
+    });
   },
 
   render: function(){
@@ -16,22 +23,27 @@ App.Views.Deals = Backbone.View.extend({
     this.$el.empty()
     this.collection.fetch({
       success: function(dealsData){
-        dealsData.each(function(deal){
-          var dealView = new App.Views.Deal()
-          var data = {deal: deal.attributes}
-          dealView.isotopeRender(data)
-        })
-        $(".deals").imagesLoaded( function(){
-          $('#ajax-loader').css({"visibility": "hidden"})
-          $(".deals").isotope({
-            itemSelector : '.item',
-            layoutMode : 'masonry'
-          });
-          $('.deals').css({"visibility": "visible"})
-        })
+        _this.addAllDeals(dealsData).initLoad()
       }
     })
     return this
+  }
+
+  ,addAllDeals: function(data){
+    data.each(function(deal){
+      var dealView = new App.Views.Deal()
+      var data = {deal: deal.attributes}
+      dealView.isotopeRender(data)
+    })
+    return this
+  }
+
+  ,initLoad: function() {
+    this.$el.imagesLoaded( function(){
+      $('#ajax-loader').css({"visibility": "hidden"})
+      $('.deals').isotope('reLayout')
+      $('.deals').css({"visibility": "visible"})
+    })
   }
 })
 
@@ -44,9 +56,6 @@ App.Views.Deals = Backbone.View.extend({
 App.Views.Deal = Backbone.View.extend({
   el: '.deals',
 
-  events: {
-    "click .item" : function() {console.log(this)}
-  },
 
   render: function(options){
     var _this = this
@@ -63,9 +72,8 @@ App.Views.Deal = Backbone.View.extend({
   },
 
   isotopeRender: function(data){
-    this.model = new App.Models.Deal(data.deal)
     var singleDeal = template('single-deal-template', data)
-    $('.deals').append($(singleDeal))
+    $('.deals').isotope( 'insert', $(singleDeal))
   }
 
 })
