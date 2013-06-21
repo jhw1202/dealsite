@@ -11,6 +11,7 @@ gem 'mustache'
 gem 'faker'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
+gem 'rmagick'
 
 group :development do
   gem 'better_errors'
