@@ -9,7 +9,7 @@ App.Views.Deals = Backbone.View.extend({
 
   ,events: {
     "mouseenter .item" : "toggleLinkIcon",
-    "mouseleave .item" : "toggleLinkIcon"
+    "mouseleave .item" : "toggleLinkIcon",
   }
 
   ,initialize: function() {
@@ -89,30 +89,28 @@ App.Views.Deal = Backbone.View.extend({
 |--------------------------------------------------------------------------
 */
 App.Views.SubmitDealForm = Backbone.View.extend({
-    el: "#dialog-form",
+    el: '.slider',
 
     events: {
-      'submit .deal-submit-form' : 'submitDeal',
+      'submit .deal-submit-form' : "submit",
+      'click #cancel' : "cancel"
     },
-    //try to use this for create and update
-    submitDeal: function(event){
+
+    submit: function(event) {
       event.preventDefault()
-      var data = $(event.currentTarget).serializeObject()
-      var dealData = {
-        title: data["deal[title]"],
-        body: data["deal[body]"],
-        source: data["deal[source]"]
-      }
-      var deal = new App.Models.Deal()
-      deal.save(dealData, {
-        success: function(deal){
-          alert("Deal submitted!")
-          $("#dialog-form").dialog('close')
-        }
+    },
+
+    cancel: function(event) {
+      _this = this
+      this.$el.slideUp("slow", function(){
+        _this.$el.html('')
       })
+    },
+
+    render: function() {
+      this.$el.html(Mustache.render($("#submit-deal-form").html()))
+      this.$el.slideDown("slow")
     }
-
-
   })
 
 /*
@@ -134,6 +132,7 @@ App.Views.EditDealForm = Backbone.View.extend({
     this.deal = new App.Models.Deal({id: options.id})
     this.deal.fetch({
       success: function(deal){
+         $('#ajax-loader').css({"visibility": "hidden"})
         var dealData = deal.attributes
         _this.$el.html(template("edit-deal-form", {deal: dealData}))
       }
