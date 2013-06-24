@@ -98,6 +98,17 @@ App.Views.SubmitDealForm = Backbone.View.extend({
 
     submit: function(event) {
       event.preventDefault()
+      var dealData = $(event.currentTarget).serializeObject()
+      var deal = new App.Models.Deal()
+      deal.save(dealData, {
+        success: function(savedDeal) {
+          console.log(savedDeal.attributes)
+          alert("Succeesssss!")
+          $('.slider').slideUp('slow')
+
+        }
+      })
+
     },
 
     cancel: function(event) {
