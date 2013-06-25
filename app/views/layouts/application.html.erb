@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   </head>
 <body>
-
+<div class="App">
 <div class="header">
   <div class="search">
   <form>
@@ -28,6 +28,6 @@
 </div>
 <%= image_tag('ajax-loader.gif', :id => "ajax-loader") %>
 <%= yield %>
-
+</div>
 </body>
 </html>

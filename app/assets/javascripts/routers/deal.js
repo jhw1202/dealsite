@@ -11,7 +11,7 @@ App.Router = Backbone.Router.extend({
   },
 
   home: function() {
-  	new App.Views.Deals({collection: new App.Collections.Deals()}).render()
+    new App.Views.Deals().render()
   },
 
   singleDeal: function(id) {

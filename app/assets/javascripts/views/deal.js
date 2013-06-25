@@ -1,5 +1,40 @@
 /*
 |--------------------------------------------------------------------------
+| App View
+|--------------------------------------------------------------------------
+*/
+App.Views.AppView = Backbone.View.extend({
+  el: '.App',
+
+  events: {
+    "click #submit_deal" : "toggleSubmit"
+
+  },
+
+  initialize: function() {
+
+  },
+
+  login: function() {
+    console.log("Logging In!!!")
+  },
+
+  toggleSubmit: function(e) {
+    e.preventDefault()
+    if ($('.slider').css("display") === "none")
+    {
+      new App.Views.SubmitDealForm().render()
+    }
+    else
+    {
+      $('.slider').slideUp("slow")
+    }
+  }
+})
+
+
+/*
+|--------------------------------------------------------------------------
 | All Deals View
 |--------------------------------------------------------------------------
 */
@@ -9,20 +44,25 @@ App.Views.Deals = Backbone.View.extend({
 
   ,events: {
     "mouseenter .item" : "toggleLinkIcon",
-    "mouseleave .item" : "toggleLinkIcon",
+    "mouseleave .item" : "toggleLinkIcon"
   }
 
   ,initialize: function() {
+    this.listenTo(App.dealsCollection, 'add', this.addOne )
     $(".deals").isotope({
       itemSelector : '.item',
       layoutMode : 'masonry'
     });
   }
 
+  ,addOne: function() {
+    console.log("added one!!!")
+  }
+
   ,render: function(){
     var _this = this
     this.$el.empty()
-    this.collection.fetch({
+    App.dealsCollection.fetch({
       success: function(dealsData){
         _this.addAllDeals(dealsData).initLoad()
       }
@@ -41,7 +81,7 @@ App.Views.Deals = Backbone.View.extend({
 
   ,initLoad: function() {
     this.$el.imagesLoaded( function(){
-      $('#ajax-loader').css({"visibility": "hidden"})
+      $('#ajax-loader').hide()
       $('.deals').isotope('reLayout')
       $('.deals').css({"visibility": "visible"})
     })
@@ -67,7 +107,7 @@ App.Views.Deal = Backbone.View.extend({
     this.model = new App.Models.Deal({id: options.id})
     this.model.fetch({
       success: function(deal){
-        $('#ajax-loader').css({"visibility": "hidden"})
+        $('#ajax-loader').hide()
         var data = {deal: deal.attributes}
         _this.$el.html(template('single-deal-template', data))
         $('.deals').css({"visibility": "visible"})
@@ -97,7 +137,16 @@ App.Views.SubmitDealForm = Backbone.View.extend({
     },
 
     submit: function(event) {
+      var _this = this
       event.preventDefault()
+      var dealData = $(event.currentTarget).serializeObject()
+      var deal = new App.Models.Deal()
+      deal.save(dealData, {
+        success: function(savedDeal) {
+          $('.slider').slideUp('slow')
+           App.dealsCollection.add(dealData)
+        }
+      })
     },
 
     cancel: function(event) {
@@ -132,7 +181,7 @@ App.Views.EditDealForm = Backbone.View.extend({
     this.deal = new App.Models.Deal({id: options.id})
     this.deal.fetch({
       success: function(deal){
-         $('#ajax-loader').css({"visibility": "hidden"})
+         $('#ajax-loader').hide()
         var dealData = deal.attributes
         _this.$el.html(template("edit-deal-form", {deal: dealData}))
       }
