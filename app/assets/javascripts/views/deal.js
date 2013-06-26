@@ -48,26 +48,32 @@ App.Views.Deals = Backbone.View.extend({
   }
 
   ,initialize: function() {
-    this.listenTo(App.dealsCollection, 'add', this.addOne )
+    this.render()
+
     $(".deals").isotope({
       itemSelector : '.item',
       layoutMode : 'masonry'
     });
   }
 
-  ,addOne: function() {
-    console.log("added one!!!")
+  ,addOne: function(deal) {
+    console.log("addone")
+    var dealView = new App.Views.Deal()
+    dealView.isotopeRender({deal: deal.attributes})
   }
 
   ,render: function(){
+    console.log("render")
     var _this = this
     this.$el.empty()
     App.dealsCollection.fetch({
       success: function(dealsData){
+        console.log('render success success')
         _this.addAllDeals(dealsData).initLoad()
+        _this.listenTo(App.dealsCollection, 'add', _this.addOne )
       }
     })
-    return this
+
   }
 
   ,addAllDeals: function(data){
@@ -130,10 +136,13 @@ App.Views.Deal = Backbone.View.extend({
 */
 App.Views.SubmitDealForm = Backbone.View.extend({
     el: '.slider',
-
     events: {
       'submit .deal-submit-form' : "submit",
       'click #cancel' : "cancel"
+    },
+
+    initialize: function() {
+      this.template = Mustache.render($("#submit-deal-form").html(), {})
     },
 
     submit: function(event) {
@@ -141,12 +150,22 @@ App.Views.SubmitDealForm = Backbone.View.extend({
       event.preventDefault()
       var dealData = $(event.currentTarget).serializeObject()
       var deal = new App.Models.Deal()
-      deal.save(dealData, {
+      App.dealsCollection.create(dealData, {
         success: function(savedDeal) {
-          $('.slider').slideUp('slow')
-           App.dealsCollection.add(dealData)
+          console.log("created!!!")
+
+          $('.slider').hide('slow')
+          //   $('.deal-submit-form').remove()
+          // })
         }
       })
+      // deal.save(dealData, {
+      //   success: function(savedDeal) {
+      //     console.log("submit")
+      //     $('.slider').slideUp('slow')
+      //      App.dealsCollection.add(dealData)
+      //    }
+      // })
     },
 
     cancel: function(event) {
@@ -157,7 +176,8 @@ App.Views.SubmitDealForm = Backbone.View.extend({
     },
 
     render: function() {
-      this.$el.html(Mustache.render($("#submit-deal-form").html()))
+      // console.log(this.template)
+      this.$el.html(this.template)
       this.$el.slideDown("slow")
     }
   })
