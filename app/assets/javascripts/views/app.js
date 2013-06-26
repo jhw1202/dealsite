@@ -2,7 +2,8 @@ App.Views.AppView = Backbone.View.extend({
   el: '.App',
 
   events: {
-    "click #submit_deal" : "toggleSubmit"
+    "click #submit_deal" : "toggleSubmit",
+    "click #sign-up" : "toggleSignUp"
 
   },
 
@@ -12,6 +13,16 @@ App.Views.AppView = Backbone.View.extend({
 
   login: function() {
     console.log("Logging In!!!")
+  },
+
+  toggleSignUp: function(event) {
+    event.preventDefault()
+    if ($('.slider').css("display") === "none") {
+      new App.Views.SignUp().render()
+    }
+    else {
+      $('.slider').slideUp("slow")
+    }
   },
 
   toggleSubmit: function(e) {

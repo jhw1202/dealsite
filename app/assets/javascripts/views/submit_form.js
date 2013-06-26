@@ -14,8 +14,7 @@ App.Views.SubmitDealForm = Backbone.View.extend({
       event.stopImmediatePropagation()
       event.preventDefault()
       var dealData = $(event.currentTarget).serializeObject()
-      var deal = new App.Models.Deal()
-      App.dealsCollection.create(dealData, {
+      App.dealsCollection.create({deal: dealData}, {
         success: function(savedDeal) {
           $('.slider').hide('slow')
         }
