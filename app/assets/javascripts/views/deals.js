@@ -16,18 +16,15 @@ App.Views.Deals = Backbone.View.extend({
   }
 
   ,addOne: function(deal) {
-    console.log("addone")
     var dealView = new App.Views.Deal()
     dealView.isotopeRender({deal: deal.attributes})
   }
 
   ,render: function(){
-    console.log("render")
     var _this = this
     this.$el.empty()
     App.dealsCollection.fetch({
       success: function(dealsData){
-        console.log('render success success')
         _this.addAllDeals(dealsData).initLoad()
         _this.listenTo(App.dealsCollection, 'add', _this.addOne )
       }

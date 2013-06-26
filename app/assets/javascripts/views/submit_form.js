@@ -17,20 +17,9 @@ App.Views.SubmitDealForm = Backbone.View.extend({
       var deal = new App.Models.Deal()
       App.dealsCollection.create(dealData, {
         success: function(savedDeal) {
-          console.log("created!!!")
-
           $('.slider').hide('slow')
-          //   $('.deal-submit-form').remove()
-          // })
         }
       })
-      // deal.save(dealData, {
-      //   success: function(savedDeal) {
-      //     console.log("submit")
-      //     $('.slider').slideUp('slow')
-      //      App.dealsCollection.add(dealData)
-      //    }
-      // })
     },
 
     cancel: function(event) {
@@ -41,7 +30,6 @@ App.Views.SubmitDealForm = Backbone.View.extend({
     },
 
     render: function() {
-      // console.log(this.template)
       this.$el.html(this.template)
       this.$el.slideDown("slow")
     }
