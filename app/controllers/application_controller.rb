@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     return respond(200, code) unless code.kind_of?(Integer) or code.kind_of?(Symbol)
     render :json => data, :status => code
   end
+
+   def create_user_session(user)
+    session[:user_id] = user.id
+  end
 end
