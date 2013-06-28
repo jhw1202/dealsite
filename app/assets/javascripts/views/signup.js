@@ -20,19 +20,10 @@ App.Views.SignUp = Backbone.View.extend({
   	var user = new App.Models.User
   	user.save({user: userData}, {
   		error: function (originalModel, resp, options) {
-        console.log("Fuck! There was an error Motherfucker!")
+
   		},
-  		success: function (model,data,options) {
-        console.log("options")
-        console.log(options)
-        console.log("model")
-        console.log(model)
-        console.log("data")
-        console.log(data)
-        if (options.xhr.getResponseHeader('X-Message')){
-            alert(options.xhr.getResponseHeader('X-Message'))
-        }
-        $('.slider').slideUp('slow')
+  		success: function (model,data,options)
+{        $('.slider').slideUp('slow')
   		}
   	});
 
