@@ -17,17 +17,20 @@
   {{/deal}}
 </script>
 
-<div id="dialog-form" title="Share a deal!">
-  <p class="validateTips">All form fields are required.</p>
 
-<%= form_for Deal.new, :html => {:class => 'deal-submit-form'} do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :body, "Description" %>
-    <%= f.text_area :body %>
-    <%= f.label :source, "Deal Source URL" %>
-    <%= f.text_field :source %>
-    <%= f.submit %>
-<% end %>
+<script id='submit-deal-form' type="text/mustache">
+  <form class="deal-submit-form">
+    <h3>Submit your deal</h3>
+    <label for='title'></label>
+    <input type='text' name='title'>
 
-</div>
+    <label for='body'>Description</label>
+    <textarea name='body'></textarea>
+
+    <label for='source'>Deal Source URL</label>
+    <input type='text' name='source'>
+
+    <input type='submit' value='Submit'>
+    <input id="cancel" type='button' value='Cancel'>
+  </form>
+</script>

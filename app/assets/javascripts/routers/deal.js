@@ -7,11 +7,13 @@ App.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'deals/:id': 'singleDeal',
-    'edit/deals/:id': 'editDeal'
+    'deals/:id/edit': 'editDeal',
+    'users/new': 'signup'
+
   },
 
   home: function() {
-  	new App.Views.Deals({collection: new App.Collections.Deals()}).render()
+    new App.Views.Deals()
   },
 
   singleDeal: function(id) {
@@ -20,5 +22,10 @@ App.Router = Backbone.Router.extend({
 
   editDeal: function(id) {
   	new App.Views.EditDealForm().render({id: id})
+  },
+
+  signup: function() {
+    // new App.Views.SignUp()
   }
+
 })

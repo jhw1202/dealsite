@@ -6,6 +6,10 @@ Dealsite::Application.routes.draw do
   match "/deals/:id" => "deals#update", :via => :put
 
   match "/deals/:id" => "deals#destroy", :via => :delete
+
+  match "signup" => "users#new", :via => :get
+
+  resource :users, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
