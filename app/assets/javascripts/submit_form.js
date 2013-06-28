@@ -13,11 +13,16 @@ $(document).ready(function(){
       }
     });
 
-    $( "#submit_deal" ).on('click', function() {
-        $( "#dialog-form" ).dialog( "open" );
+    $( "#submit_deal" ).on('click', function(e) {
+        e.preventDefault()
+        //$( "#dialog-form" ).dialog( "open" );
+        if ($('.slider').css("display") === "none")
+        {
+          new App.Views.SubmitDealForm().render()
+        }
+        else
+        {
+          $('.slider').slideUp("slow")
+        }
     });
-
-
-
-
 })
