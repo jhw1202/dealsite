@@ -4,7 +4,7 @@ class DealsController < ApplicationController
 
   def index
     deals = ARD.attributes(Deal.all)
-
+    # Rails.logger.debug session[:_csrf_token]
     respond deals
   end
 
@@ -12,7 +12,6 @@ class DealsController < ApplicationController
     return no_deal if no_deal?(params[:id])
 
     deal = ARD.attributes(Deal.find(params[:id]))
-
     respond deal
   end
 

@@ -1,21 +1,20 @@
 class UsersController < ApplicationController
 
-	# respond_to :html, :json
-
   def new
   	@user = User.new
   end
 
   def create
-  	user = User.new(params[:user])
-
-  	if user.save
-      create_user_session(user)
+    # Rails.logger.debug(user_params)
+    Rails.logger.debug(filter_params(User, params[:user]))
+  	@user = User.new(filter_params(User, params[:user]))
+    Rails.logger.debug
+  	if @user.save
+      sign_in(@user)
   		flash[:notice] = 'Account Creation Success'
   	end
 
-  	respond user
+  	respond @user
   end
-
 
 end

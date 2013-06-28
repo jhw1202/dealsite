@@ -8,7 +8,16 @@ window.App = {
     new App.Router
     new App.Views.AppView
     Backbone.history.start()
+  },
+
+  login: function() {
+
+  },
+
+  logout: function() {
+
   }
+
 }
 
 $(document).ready(function(){
