@@ -33,3 +33,10 @@ $(document).ajaxSend(function (e, xhr, options) {
   var token = $("meta[name='csrf-token']").attr("content");
   xhr.setRequestHeader("X-CSRF-Token", token);
 });
+
+$(document).ajaxComplete(function (e, xhr, options) {
+
+	if (xhr.getResponseHeader('X-Flash-Notice')){
+    App.appView.renderFlashMessage(xhr.getResponseHeader('X-Flash-Notice'))
+  }
+});

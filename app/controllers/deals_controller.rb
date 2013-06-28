@@ -22,6 +22,8 @@ class DealsController < ApplicationController
 
     deal = Deal.create(attributes)
 
+    flash[:notice] = "Dollar dollar bill y'all"
+
     respond deal
   end
 

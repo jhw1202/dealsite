@@ -6,12 +6,12 @@ window.App = {
   init: function() {
   	this.dealsCollection = new App.Collections.Deals()
     new App.Router
-    new App.Views.AppView
+    this.appView = new App.Views.AppView()
     Backbone.history.start()
   },
 
   login: function() {
-
+    //auth_token=(\w+);
   },
 
   logout: function() {
@@ -23,3 +23,4 @@ window.App = {
 $(document).ready(function(){
   App.init()
 })
+

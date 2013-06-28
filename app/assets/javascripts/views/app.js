@@ -15,6 +15,16 @@ App.Views.AppView = Backbone.View.extend({
     console.log("Logging In!!!")
   },
 
+  renderFlashMessage: function(message){
+    $('.flash-message').html(message)
+    $('.flash-container').slideDown('slow', function(){
+      setTimeout(function() {
+        $('.flash-container').slideUp('slow')
+      }, 2798)
+    } )
+
+  },
+
   toggleSignUp: function(event) {
     event.preventDefault()
     if ($('.slider').css("display") === "none") {
