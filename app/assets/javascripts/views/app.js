@@ -3,7 +3,9 @@ App.Views.AppView = Backbone.View.extend({
 
   events: {
     "click #submit_deal" : "toggleSubmit",
-    "click #sign-up" : "toggleSignUp"
+    "click #sign-up" : "toggleSignUp",
+    "click #sign-in" : "signIn",
+    "click #sign-out" : "signOut"
 
   },
 
@@ -11,15 +13,36 @@ App.Views.AppView = Backbone.View.extend({
 
   },
 
-  login: function() {
-    console.log("Logging In!!!")
+  signIn: function() {
+    $('#sign-up').fadeToggle('fast')
+    $('#sign-in').fadeToggle('fast', function() {
+      $('#sign-out').fadeToggle('fast')
+    })
+
+  },
+
+  signOut: function() {
+    $('#sign-out').fadeToggle('fast', function() {
+      $('#sign-up').fadeToggle('fast')
+      $('#sign-in').fadeToggle('fast')
+    })
+  },
+
+  toggleSignin: function() {
+    event.preventDefault()
+    if ($('.slider').css("display") === "none") {
+      new App.Views.Signin().render()
+    }
+    else {
+      $('.slider').slideUp("slow")
+    }
   },
 
   renderFlashMessage: function(message){
     $('.flash-message').html(message)
-    $('.flash-container').slideDown('slow', function(){
+    $('.flash-container').fadeIn('slow', function(){
       setTimeout(function() {
-        $('.flash-container').slideUp('slow')
+        $('.flash-container').fadeOut('slow')
       }, 2798)
     } )
 

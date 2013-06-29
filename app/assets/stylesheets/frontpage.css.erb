@@ -39,9 +39,10 @@ body {
 .product_title {
   font-size: .75em;
 }
+
 .menu {
   float: right;
-  line-height: 40px;
+  line-height: 45px;
   margin-right: 20px;
 }
 
@@ -97,8 +98,16 @@ body {
   height: 30px;
   width: 100%;
   margin-bottom: 0;
-
   box-shadow: 0px 5px 5px #888;
+}
+
+.nav a {
+  margin-left: 8px;
+  line-height: 30px;
+  color: #000000;
+  text-decoration: none;
+  font-size: .7em;
+  font-family: 'latoregular', sans-serif;
 }
 
 .item {
@@ -172,15 +181,18 @@ input.text {
 }
 
 .flash-container {
+  z-index: 1;
   display: none;
   position: absolute;
-  top: 0;
+  top: 50%;
   width: 400px;
   height: 60px;
   left: 50%;
   margin-left: -200px;
-  background-color: #bdc3c7;
+  margin-top: -30px;
+  background-color: rgba(12,12,12,.8);
   text-align: center;
+  border-radius: 5px;
 }
 
 .flash-message {
@@ -192,3 +204,9 @@ input.text {
   font-family: 'latoregular', sans-serif;
   display: inline-block;
 }
+
+#sign-out {
+  display: none;
+}
+
+

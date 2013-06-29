@@ -6,7 +6,6 @@ App.Views.SignUp = Backbone.View.extend({
   },
 
   render: function() {
-    console.log(this)
   	this.$el.html(Mustache.render($("#user-signup-template").html(), {}))
   	$('.slider').slideDown('slow')
   },
@@ -22,8 +21,9 @@ App.Views.SignUp = Backbone.View.extend({
   		error: function (originalModel, resp, options) {
 
   		},
-  		success: function (model,data,options)
-{        $('.slider').slideUp('slow')
+  		success: function (model,data,options){
+        $('.slider').slideUp('slow')
+        App.appView.signIn()
   		}
   	});
 

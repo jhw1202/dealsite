@@ -1,0 +1,18 @@
+<script id='edit-deal-form' type="text/mustache">
+  {{#deal}}
+  <form class="deal-edit-form">
+    <h3>Edit your deal</h3>
+    <label for='title'></label>
+    <input type='text' name='title' value="{{&title}}">
+
+    <label for='body'>Description</label>
+    <textarea name='body'>{{body}}</textarea>
+
+    <label for='source'>Deal Source URL</label>
+    <input type='text' name='source' value="{{&source}}">
+
+    <input type='submit' value='Finish Editing'>
+  </form>
+  <button class='delete-deal-button'>Delete this Deal</button>
+  {{/deal}}
+</script>
