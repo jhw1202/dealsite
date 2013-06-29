@@ -8,14 +8,6 @@ window.App = {
     new App.Router
     this.appView = new App.Views.AppView()
     Backbone.history.start()
-  },
-
-  login: function() {
-    //auth_token=(\w+);
-  },
-
-  logout: function() {
-
   }
 
 }
