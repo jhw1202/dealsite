@@ -4,7 +4,6 @@ class DealsController < ApplicationController
 
   def index
     deals = ARD.attributes(Deal.all)
-    # Rails.logger.debug session[:_csrf_token]
     respond deals
   end
 
