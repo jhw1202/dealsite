@@ -27,6 +27,7 @@ App.Views.Deals = Backbone.View.extend({
       success: function(dealsData){
         _this.addAllDeals(dealsData).initLoad()
         _this.listenTo(App.dealsCollection, 'add', _this.addOne )
+        jQuery("time.timeago").timeago();
       }
     })
 

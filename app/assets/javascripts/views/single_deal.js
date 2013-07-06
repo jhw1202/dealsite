@@ -18,6 +18,7 @@ App.Views.Deal = Backbone.View.extend({
   isotopeRender: function(data){
     var singleDeal = template('single-deal-template', data)
     $('.deals').isotope( 'insert', $(singleDeal))
+    jQuery("time.timeago").timeago();
   }
 
 })

@@ -1,14 +1,15 @@
 <script type='text/mustache' id='single-deal-template'>
-  <div class='item'>
-  {{#deal}}
+ {{#deal}}
+ <div class='item' product_id="{{id}}">
     <div class="product_image">
     <img src="{{product_image}}" />
     </div>
     <div class="product_info" >
     <div class="product_title">{{title}}</div>
-    <div class="product_price">${{price}}.00</div>
+    <div class="product_price">${{price}}</div>
     <a href="{{&source}}" class="external_link" target="_blank"><%= image_tag("external_link.png", :width => "25px") %></a>
     <div class="product_meganess">Meganess: {{clicks}}</div>
+    <div >Posted <time class='timeago' datetime="{{created_at}}"></time></div>
   {{/deal}}
   </div>
   </div>

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui.min
 //= require jquery.isotope.min
+//= require jquery.timeago
 //= require underscore
 //= require backbone
 //= require mustache
