@@ -11,7 +11,26 @@ App.Views.Deals = Backbone.View.extend({
 
     $(".deals").isotope({
       itemSelector : '.item',
-      layoutMode : 'masonry'
+      layoutMode : 'masonry',
+      sortBy: 'date',
+      getSortData : {
+        sortBy: function ($elem) {
+          //we have a problem here when we add a new deal to the page.
+          return App.dealsCollection.get( parseInt($elem.attr("product_id")) ).attributes
+        },
+        title : function ( $elem ) {
+          return $elem.find('.product_title').text();
+        },
+        price : function ( $elem) {
+          this.sortBy($elem).price
+        },
+        popularity : function ( $elem ) {
+          return this.sortBy($elem).clicks
+        },
+        date : function( $elem ){
+          return this.sortBy($elem).age
+        }
+      }
     });
   }
 
