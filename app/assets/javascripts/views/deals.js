@@ -35,8 +35,10 @@ App.Views.Deals = Backbone.View.extend({
   }
 
   ,addOne: function(deal) {
-    var dealView = new App.Views.Deal()
-    dealView.isotopeRender({deal: deal.attributes})
+    deal.on('sync', function(savedDeal){
+      var dealView = new App.Views.Deal()
+      dealView.isotopeRender({deal: savedDeal.attributes})
+    })
   }
 
   ,render: function(){
