@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	has_many :deals
+  has_many :comments
 
 	before_save :create_token
 
