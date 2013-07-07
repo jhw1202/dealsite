@@ -1,5 +1,5 @@
 class Deal < ActiveRecord::Base
-  attr_accessible :title, :body, :source, :clicks, :cents
+  attr_accessible :title, :body, :source, :cents
 
   belongs_to :user
 
