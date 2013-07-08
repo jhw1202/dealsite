@@ -25,7 +25,13 @@ App.Views.AppView = Backbone.View.extend({
         search.fetch({
           data: searchQuery,
           success: function(results) {
-            App.dealsView.addAllDeals(results).initLoad()
+            if (results.length === 0) {
+              App.appView.renderFlashMessage("Your Query sucks! " + searchQuery.query + " is stupid" )
+              App.dealsView.render()
+            }
+            else {
+              App.dealsView.addAllDeals(results).initLoad()
+            }
           }
         })
       })
