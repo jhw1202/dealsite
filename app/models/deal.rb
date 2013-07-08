@@ -6,9 +6,10 @@ class Deal < ActiveRecord::Base
 
   mount_uploader :deal_image, DealImageUploader
 
-  before_create :remove_empty_params
+  before_create :add_http
 
-  def remove_empty_params
+  def add_http
+  	self.source = "http://" + self.source unless self.source.match(/http/)
+	end
 
-  end
 end

@@ -11,6 +11,8 @@ Dealsite::Application.routes.draw do
 
   match 'search' => "deals#search", :via => :get
 
+  match '/deals/:id/go' => "deals#go", :via => :put, :as => "external"
+
   resource :users, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.

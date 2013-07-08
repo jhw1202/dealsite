@@ -48,6 +48,16 @@ class DealsController < ApplicationController
     respond deals
   end
 
+  def go
+    deal = Deal.find(params[:id])
+
+    deal.clicks += 1
+
+    deal.save
+
+    redirect_to deal.source
+  end
+
   private
 
   def no_deal
