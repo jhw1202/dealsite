@@ -8,39 +8,17 @@
   </head>
 <body>
 <div class="App">
-<div class="header">
-  <div class="search">
-  <form>
-    <input type="text" placeholder="Search..." autocomplete="off">
-    <a href="#"><%= image_tag "search.png" %></a>
-  </form>
+
+  <%= render 'layouts/navbar' %>
+
+  <div class="slider">
   </div>
-  <a href="#" class="logo">MegaMega Deals</a>
-  <div class="menu">
-  <a href="#" id="sign-in">Sign In</a>
-  <a href="#" id="sign-up">Sign Up</a>
-  <a href="#" id="sign-out">Sign Out</a>
-</div>
-</div>
-<div class="nav">
-  <a href="#" id="submit_deal">Submit a Deal</a>
-  <div class="sort">
-    <select>
-      <option value="date">Sort: Date</option>
-      <option value="popularity">Sort: Popularity</option>
-      <option value="price_high_low">Sort: Price High to Low</option>
-      <option value="price_low_high">Sort: Price Low to High</option>
-    </select>
+  <div class="flash-container">
+    <div class="flash-message">
+    </div>
   </div>
-</div>
-<div class="slider">
-</div>
-<div class="flash-container">
-  <div class="flash-message">
-  </div>
-</div>
-<%= image_tag('ajax-loader.gif', :id => "ajax-loader") %>
-<%= yield %>
+  <%= image_tag('ajax-loader.gif', :id => "ajax-loader") %>
+  <%= yield %>
 </div>
 </body>
 </html>

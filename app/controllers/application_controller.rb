@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_params(model_class, params)
-    params.dup.extract!(*model_class.accessible_attributes.to_a[1..-1].map(&:to_sym))
+    attributes = params.dup.extract!(*model_class.accessible_attributes.to_a[1..-1].map(&:to_sym))
+    attributes.each_key {|key| attributes.delete(key) if attributes[key] == "" || attributes[key] == nil}
   end
 
   def respond(code, data = nil)

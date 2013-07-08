@@ -1,8 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| Deal Router
-|--------------------------------------------------------------------------
-*/
 App.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
@@ -13,7 +8,6 @@ App.Router = Backbone.Router.extend({
   },
 
   home: function() {
-    new App.Views.Deals()
   },
 
   singleDeal: function(id) {

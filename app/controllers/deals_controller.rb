@@ -11,12 +11,11 @@ class DealsController < ApplicationController
     return no_deal if no_deal?(params[:id])
 
     deal = ARD.attributes(Deal.find(params[:id]))
+
     respond deal
   end
 
   def create
-    p params.inspect
-
     attributes = filter_params(Deal, params[:deal])
 
     deal = Deal.create(attributes)
