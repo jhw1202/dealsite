@@ -5,10 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+websites = ["google.com", "yahoo.com", "bing.com", "amazon.com", "reddit.com/r/learnprogramming", "fatwallet.com", "zobo.com", "wikipedia.com", "meetup.com", "github.com", "megamegadeals.com", "slashdot.org", "wired.com", "theverge.com", "engadget.com", "nba.com", "florida.gov"]
 50.times do
   deal = Deal.create(title: Faker::Lorem.sentence,
               body:Faker::Lorem.paragraph,
-              source: Faker::Internet.url,
+              source: websites.sample,
               clicks: rand(0..9000),
               cents: rand(0..90000))
 
