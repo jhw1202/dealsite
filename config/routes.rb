@@ -9,6 +9,8 @@ Dealsite::Application.routes.draw do
 
   match "signup" => "users#new", :via => :get
 
+  match 'search' => "deals#search", :via => :get
+
   resource :users, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,6 +4,7 @@ class DealsController < ApplicationController
 
   def index
     deals = ARD.attributes(Deal.all)
+
     respond deals
   end
 
@@ -39,6 +40,12 @@ class DealsController < ApplicationController
     deal = Deal.find(params[:id]).destroy
 
     respond deal
+  end
+
+  def search
+    deals = Deal.where("title ~ ? or body ~ ?", params[:query], params[:query])
+
+    respond deals
   end
 
   private

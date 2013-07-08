@@ -7,6 +7,7 @@ App.Views.AppView = Backbone.View.extend({
     "click #sign-in" : "signIn",
     "click #sign-out" : "signOut",
     "change .sort select" : "sort",
+    "submit .search form" : "searchDeals"
 
   },
 
@@ -14,18 +15,38 @@ App.Views.AppView = Backbone.View.extend({
 
   },
 
+  searchDeals: function(event) {
+    event.preventDefault()
+    var searchQuery = $(event.currentTarget).serializeObject()
+    if (searchQuery.query){
+      App.dealsView.$el.isotope('remove', $('.deals').children(), function(){
+        $('#ajax-loader').show()
+        var search = new App.Collections.Results({})
+        search.fetch({
+          data: searchQuery,
+          success: function(results) {
+            App.dealsView.addAllDeals(results).initLoad()
+          }
+        })
+      })
+    }
+    else {
+      App.appView.renderFlashMessage("ID10T Error")
+    }
+  },
+
   sort: function(event) {
     var selector = $(event.currentTarget).val()
-    if (selector === "price_high_low") {
-      $('.deals').isotope({
-        sortAscending: false,
-        sortBy : 'price'
-      });
-    }
-    else if (selector === "price_low_high"){
+    if (selector === "price_low_high") {
       $('.deals').isotope({
         sortBy : 'price',
         sortAscending: true
+      })
+    }
+    else if (selector === "price_high_low"){
+      $('.deals').isotope({
+        sortBy : 'price',
+        sortAscending: false
       })
     }
     else if (selector === 'popularity') {
@@ -37,7 +58,7 @@ App.Views.AppView = Backbone.View.extend({
     else if (selector === 'date') {
       $('.deals').isotope({
         sortBy:'date',
-        sortAscending: true
+        sortAscending: false
       })
     }
    },
