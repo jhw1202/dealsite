@@ -43,7 +43,11 @@ class DealsController < ApplicationController
   end
 
   def search
-    deals = Deal.where("lower(title) ~ ? or lower(body) ~ ?", params[:query].downcase, params[:query].downcase)
+    if params[:query]
+      deals = Deal.where("lower(title) ~ ? or lower(body) ~ ?", params[:query].downcase, params[:query].downcase)
+    else
+      deals = []
+    end
 
     respond deals
   end

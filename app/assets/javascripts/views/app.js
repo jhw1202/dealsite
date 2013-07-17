@@ -18,7 +18,9 @@ App.Views.AppView = Backbone.View.extend({
   searchDeals: function(event) {
     event.preventDefault()
     var searchQuery = $(event.currentTarget).serializeObject()
+
     if (searchQuery.query){
+      App.router.navigate("//deals/search?query=" + searchQuery.query, {trigger: true, replace: true})
       App.dealsView.$el.isotope('remove', $('.deals').children(), function(){
         $('#ajax-loader').show()
         var search = new App.Collections.Results({})
@@ -27,7 +29,7 @@ App.Views.AppView = Backbone.View.extend({
           success: function(results) {
             if (results.length === 0) {
               App.appView.renderFlashMessage("Your Query sucks! " + searchQuery.query + " is stupid" )
-              App.dealsView.render()
+              App.router.navigate("/", {trigger: true})
             }
             else {
               App.dealsView.addAllDeals(results).initLoad()
@@ -37,6 +39,7 @@ App.Views.AppView = Backbone.View.extend({
       })
     }
     else {
+      //the search query was blank.
       App.appView.renderFlashMessage("ID10T Error")
     }
   },

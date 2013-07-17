@@ -1,4 +1,4 @@
  App.Collections.Results = Backbone.Collection.extend({
-    url: '/search',
+    url: '/deals/search',
     model: App.Models.Deal
   })

@@ -7,7 +7,7 @@ App.Views.Deals = Backbone.View.extend({
   }
 
   ,initialize: function() {
-    this.render()
+    // this.render()
 
     $(".deals").isotope({
       itemSelector : '.item',
@@ -41,7 +41,9 @@ App.Views.Deals = Backbone.View.extend({
 
   ,render: function(){
     var _this = this
-    this.$el.empty()
+    if ($('.item') > 0) {
+    this.$el.isotope('remove', $('.item'))
+    }
     App.dealsCollection.fetch({
       success: function(dealsData){
         _this.addAllDeals(dealsData).initLoad()

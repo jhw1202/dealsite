@@ -8,6 +8,7 @@ App.Router = Backbone.Router.extend({
   },
 
   home: function() {
+    App.dealsView.render()
   },
 
   singleDeal: function(id) {
